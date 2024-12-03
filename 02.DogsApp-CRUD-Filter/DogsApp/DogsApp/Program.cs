@@ -1,4 +1,6 @@
 
+using DogsApp.Core.Contracts;
+using DogsApp.Core.Services;
 using DogsApp.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -29,8 +31,11 @@ namespace DogsApp
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddTransient<IDogService, DogService>();
             var app = builder.Build();
+
+
+            
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

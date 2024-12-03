@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4Hn8COAbfVVuQRECpPo1H5r8wTua0lrAX9wXLY0EEwuknADoD/HPTSQR2gQN7nDc8OMkHegRCRw2WVZqdnb8Fw==",
+  "dgSpecHash": "d+p7sIp6DAVV3YueHFFeLAqhWGoPA5/TeW1gIeOCDWeDNz5lfBT+5Ul1hUfZtiPr3FhIWjS8zhXPBny51W6txw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Student\\Desktop\\New folder\\.git\\DogProject\\02.DogsApp-CRUD-Filter\\DogsApp\\DogsApp\\DogsApp.csproj",
+  "projectFilePath": "C:\\Users\\Student\\Desktop\\New folder\\.git\\DogProject\\02.DogsApp-CRUD-Filter\\DogsApp\\DogsApp.Core\\DogsApp.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Student\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

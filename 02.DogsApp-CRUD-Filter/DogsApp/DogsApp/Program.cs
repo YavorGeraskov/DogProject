@@ -2,6 +2,8 @@
 using DogsApp.Core.Contracts;
 using DogsApp.Core.Services;
 using DogsApp.Infrastructure.Data;
+using DogsApp.Infrastructure.Data.Infrastructure;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,10 +32,14 @@ namespace DogsApp
 
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            builder.Services.AddControllersWithViews();
-            builder.Services.AddTransient<IDogService, DogService>();
-            var app = builder.Build();
+            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseLazyLoadingProxies().UseSqlServer(connectionString));
 
+
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IDogService, DogService>();
+            builder.Services.AddScoped<IBreedService, BreedService>();
+            var app = builder.Build();
+            app.PrepareDatabase();
 
             
 

@@ -2,6 +2,7 @@
 using DogsApp.Core.Contracts;
 using DogsApp.Infrastructure.Data;
 using DogsApp.Infrastructure.Data.Domain;
+using DogsApp.Models.Breed;
 using DogsApp.Models.Dog;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -58,9 +59,16 @@ namespace DogsApp.Controllers
         }
 
         // GET: DogController/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
-            return View();
+            var dog = new DogCreateViewModel();
+            dog.Breeds = _breedService.GetBreeds().Select(c => new BreedPairViewModel()
+            {
+                Id = c.Id,
+                Name = c.Name
+            })
+            .ToList();
+           return View(dog);
         }
 
         // POST: DogController/Create
@@ -91,6 +99,8 @@ namespace DogsApp.Controllers
 
 
         // GET: DogController/Edit/5
+        [HTTPPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, DogCreateViewModel bindingModel)
         {
 
@@ -101,14 +111,14 @@ namespace DogsApp.Controllers
                 var updated = _dogService.UpdateDog(id, bindingModel.Name, bindingModel.Age, bindingModel.Breed, bindingModel.Picture);
                 if (updated)
                 {
-                    return this.RedirectToAction("Index");
+                    return this.RedirectToAction(nameof(Index));
 
                 }
 
 
             }
             
-            return View(bindingModel);
+            return View();
         }
 
         // POST: DogController/Edit/5
